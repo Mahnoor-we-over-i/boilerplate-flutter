@@ -1,3 +1,5 @@
+import 'package:boiler_plate/config/flavours.dart';
+import 'package:boiler_plate/config/global_variables.dart';
 import 'package:boiler_plate/count/count_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,10 +13,43 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     //?? add comments here
-    return MultiBlocProvider(
+    initFlavor(context);
+    return FutureBuilder(
+      future: initFlavor(context),
+      builder: ((context, snapshot) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider<CountBloc>(
+              create: (BuildContext context) =>
+                  CountBloc()..add(ChangeCountEvent(0)),
+              child: Container(),
+            )
+          ],
+          child: MaterialApp(
+            title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              // This is the theme of your application.
+              //
+              // Try running your application with "flutter run". You'll see the
+              // application has a blue toolbar. Then, without quitting the app, try
+              // changing the primarySwatch below to Colors.green and then invoke
+              // "hot reload" (press "r" in the console where you ran "flutter run",
+              // or simply save your changes to "hot reload" in a Flutter IDE).
+              // Notice that the counter didn't reset back to zero; the application
+              // is not restarted.
+              primarySwatch: GlobalVariables.appTheme,
+            ),
+            home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          ),
+        );
+        ;
+      }),
+    ); /*  MultiBlocProvider(
       providers: [
         BlocProvider<CountBloc>(
           create: (BuildContext context) =>
@@ -24,6 +59,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -34,11 +70,11 @@ class MyApp extends StatelessWidget {
           // or simply save your changes to "hot reload" in a Flutter IDE).
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
-          primarySwatch: Colors.blue,
+          primarySwatch: GlobalVariables.appTheme,
         ),
         home: const MyHomePage(title: 'Flutter Demo Home Page'),
       ),
-    );
+    ); */
   }
 }
 
@@ -128,7 +164,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       borderRadius: BorderRadius.circular(
                         200,
                       ),
-                      border: Border.all(width: 2, color: Colors.blue)),
+                      border: Border.all(
+                          width: 2, color: Theme.of(context).backgroundColor)),
                   child: Text(
                     countState is IncreaseCountState
                         ? '${countState.count}'

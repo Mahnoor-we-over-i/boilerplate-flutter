@@ -13,9 +13,14 @@ Future<void> initFlavor(BuildContext context) async {
           print('inside production');
           GlobalVariables.appTheme = Colors.purple;
           break;
+        case 'com.example.boiler_plate.stg':
+          // have colors to distinguish flavours
+          print('inside stg');
+          GlobalVariables.appTheme = Colors.pink;
+          break;
         default:
           print('inside debug');
-          GlobalVariables.appTheme = Colors.pink;
+          GlobalVariables.appTheme = Colors.blue;
       }
       // assign urls and initialize graphQl
       // apiGraphqlURL = "backend.neo4j.bridgelinxpk.com/graphql";

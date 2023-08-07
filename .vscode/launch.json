@@ -27,6 +27,17 @@
             ]
         },
         {
+            "name": "boilerplate - stg",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--flavor",
+                "stg",
+                "--no-sound-null-safety"
+            ]
+        },
+        {
             "name": "boiler_plate",
             "request": "launch",
             "type": "dart"

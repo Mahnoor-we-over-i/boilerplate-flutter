@@ -75,7 +75,7 @@ android {
             resValue "string", "app_name", "Boiler Plate Prod"
             versionNameSuffix ".prod"
         }
-        dev {
+        stg {
             dimension "app"
             applicationIdSuffix ".stg"
             resValue "string", "app_name", "Boiler Plate Stg"

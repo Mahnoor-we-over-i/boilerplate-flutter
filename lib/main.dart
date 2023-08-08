@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //?? add comments here
-    initFlavor(context);
+    // initFlavor(context);
     return FutureBuilder(
       future: initFlavor(context),
       builder: ((context, snapshot) {
@@ -47,34 +47,8 @@ class MyApp extends StatelessWidget {
             home: const MyHomePage(title: 'Flutter Demo Home Page'),
           ),
         );
-        ;
       }),
-    ); /*  MultiBlocProvider(
-      providers: [
-        BlocProvider<CountBloc>(
-          create: (BuildContext context) =>
-              CountBloc()..add(ChangeCountEvent(0)),
-          child: Container(),
-        )
-      ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
-          primarySwatch: GlobalVariables.appTheme,
-        ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      ),
-    ); */
+    );
   }
 }
 
@@ -115,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    //TODO
     SizeConfig().init(context, 616, 375);
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.

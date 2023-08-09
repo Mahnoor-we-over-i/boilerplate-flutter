@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.boiler_plate">
+    package="com.weoveri.boiler_plate">
    <application
         android:label="boiler_plate"
         android:name="${applicationName}"

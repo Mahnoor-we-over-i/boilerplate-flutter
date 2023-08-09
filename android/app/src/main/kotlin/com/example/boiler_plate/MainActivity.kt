@@ -1,4 +1,4 @@
-package com.example.boiler_plate
+package com.weoveri.boiler_plate
 
 import io.flutter.embedding.android.FlutterActivity
 

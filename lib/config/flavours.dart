@@ -6,20 +6,17 @@ import 'global_variables.dart';
 Future<void> initFlavor(BuildContext context) async {
   await PackageInfo.fromPlatform().then(
     (PackageInfo packageInfo) {
-      print(packageInfo.packageName);
       switch (packageInfo.packageName) {
         case 'com.weoveri.boiler_plate.prod':
           // have colors to distinguish flavours
-          print('inside production');
           GlobalVariables.appTheme = Colors.purple;
           break;
         case 'com.weoveri.boiler_plate.stg':
           // have colors to distinguish flavours
-          print('inside stg');
           GlobalVariables.appTheme = Colors.pink;
           break;
         default:
-          print('inside debug');
+          //debug is default
           GlobalVariables.appTheme = Colors.blue;
       }
       // assign urls and initialize graphQl

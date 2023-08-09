@@ -16,11 +16,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //?? add comments here
-    // initFlavor(context);
+    // TODO
+    // Future Builder creates a widget that builds itself based on the latest snapshot of interaction with a future
+    // We're using it here with initFlavor to get the flavor when the app is building
+    //
     return FutureBuilder(
       future: initFlavor(context),
       builder: ((context, snapshot) {
+        // We're using BloC in this app and MultiBlocProvider merges multople Bloc Providers at one place in the start of app
+        // to read more about BloC follow this link: https://medium.com/flutter-community/flutter-bloc-for-beginners-839e22adb9f5
+
         return MultiBlocProvider(
           providers: [
             BlocProvider<CountBloc>(
@@ -76,6 +81,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     _counter++;
     context.read<CountBloc>().add(ChangeCountEvent(_counter));
+    // usually we would use setState((){}) here to update out UI as the counter is incremented
+    // but it updated the whole UI
+    // but we have added ChangeCountEvent(_counter) which updates the UI without updating the whole screen
 
     /* setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -89,8 +97,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //TODO
+    // SizeConfig().init is a method in Responsive Kit
+    // it is a flutter package that helps us make responsive UI
+    // to read more about it please refer to: https://pub.dev/packages/responsive_kit
     SizeConfig().init(context, 616, 375);
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
